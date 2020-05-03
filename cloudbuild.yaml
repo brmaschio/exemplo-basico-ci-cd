@@ -3,7 +3,7 @@ steps:
         name: 'mirror.gcr.io/library/golang'
         args: ['go', 'version']
     
-    -   id: "Execultando golang"
+    -   id: "Build golang"
         name: 'mirror.gcr.io/library/golang'
         args: ['go','build','go_hpa.go']
 
