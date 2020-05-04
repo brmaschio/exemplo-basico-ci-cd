@@ -13,10 +13,12 @@ spec:
         app: go-hpa
     spec: 
       containers:
-      - name: go-hpa
-        image: brmaschio/go-hpa:latest
+        - image: brmaschio/go-hpa:latest
+        name: go-hpa
+        ports:
+        - containerPort: 8000
         resources:
-          limits:
-            cpu: 100m
           requests:
             cpu: 50m
+          limits:
+            cpu: 100m
