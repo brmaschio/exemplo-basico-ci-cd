@@ -15,7 +15,7 @@ steps:
         name: 'gcr.io/cloud-builders/docker'
         args: ['build','-t','gcr.io/$PROJECT_ID/go-hpa:$SHORT_SHA','-f','Dockerfile','.']
 
-    -   id: "Pushing image"
+    -   id: "Push image"
         name: 'gcr.io/cloud-builders/docker'
         args: ['push','gcr.io/$PROJECT_ID/go-hpa:$SHORT_SHA']
 
