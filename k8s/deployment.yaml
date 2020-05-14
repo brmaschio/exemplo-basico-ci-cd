@@ -13,7 +13,7 @@ spec:
         app: go-hpa
     spec: 
       containers:
-        - image: brmaschio/go-hpa:latest
+      - image: brmaschio/go-hpa:latest
         name: go-hpa
         ports:
         - containerPort: 8000
