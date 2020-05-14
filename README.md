@@ -1,5 +1,5 @@
 
-IP GPC Rodando Projeto:
+IP GCP Rodando Projeto:
 http://35.239.225.197:8000/
 
 
