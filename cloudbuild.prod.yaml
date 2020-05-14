@@ -17,7 +17,7 @@ steps:
 
     -   id: "Pushing image"
         name: 'gcr.io/cloud-builders/docker'
-        args: ['push','gcr.io/$PROJECT_ID/gp-hpa:$SHORT_SHA']
+        args: ['push','gcr.io/$PROJECT_ID/go-hpa:$SHORT_SHA']
 
     -   id: "Deploy k8s"
         name: 'gcr.io/cloud-builders/kubectl'
@@ -26,4 +26,4 @@ steps:
         - '-f'
         env:
         - 'CLOUDSDK_COMPUTE_ZONE=us-central1-c'
-        - 'CLOUDSDK_CONTAINER_CLUSTER=go-hpa'
+        - 'CLOUDSDK_CONTAINER_CLUSTER=cluster-go-hpa'
