@@ -19,12 +19,21 @@ steps:
         name: 'gcr.io/cloud-builders/docker'
         args: ['push','gcr.io/$PROJECT_ID/go-hpa:$SHORT_SHA']
 
+    -   id: "Create New deployment"
+        name: 'gcr.io/cloud-builders/gcloud'
+        entrypoint: '/bin/bash'
+        args:
+         - '-c'
+         - |
+           sed 's#img-go-hpa-deployment#'gcr.io/$PROJECT_ID/go-hpa:$SHORT_SHA#g' k8s/deployment.yaml > k8s/deployment-prod.yaml;
+           cat k8s/deployment-prod.yaml;
+
     -   id: "Deploy k8s"
         name: 'gcr.io/cloud-builders/kubectl'
         args:
         - 'apply'
         - '-f'
-        - 'k8s/deployment.yaml'
+        - 'k8s/deployment-prod.yaml'
         env:
         - 'CLOUDSDK_COMPUTE_ZONE=us-central1-c'
         - 'CLOUDSDK_CONTAINER_CLUSTER=cluster-go-hpa'
